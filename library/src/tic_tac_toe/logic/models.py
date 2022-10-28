@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from enum import Enum
+import enum
 import re
 from dataclasses import dataclass
 from functools import cached_property
@@ -21,7 +21,7 @@ WINNING_PATTERNS = (
     "..?.?.?..",
 )
 
-class Mark(Enum):
+class Mark(str, enum.Enum):
     CROSS = "X"
     NAUGHT = "O"
 
