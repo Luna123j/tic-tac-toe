@@ -85,3 +85,14 @@ class GameState:
                 if re.match(pattern.replace("?", mark), self.grid.cells):
                     return mark
         return None
+    
+    @cached_property
+    def winning_cells(self) -> list[int]:
+        for pattern in WINNING_PATTERNS:
+            for mark in Mark:
+                if re.match(pattern.replace("?", mark), self.grid.cells):
+                    return [
+                        match.start()
+                        for match in re.finditer(r"\?", pattern)
+                    ]
+        return []
